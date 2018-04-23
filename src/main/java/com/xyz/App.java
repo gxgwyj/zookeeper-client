@@ -10,4 +10,7 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+    private String createUser(){
+        return null;
+    }
 }
