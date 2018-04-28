@@ -6,4 +6,13 @@ package com.xyz;
  */
 public class Executor {
 
+
+    public static void main(String[] args) {
+        ZookeeperClient zookeeperClient = ZookeeperClient.getZkInstance();
+        zookeeperClient.watchChanged("/gaoxugang");
+        while (true){
+            zookeeperClient.watchChanged("/gaoxugang");
+        }
+    }
+
 }
