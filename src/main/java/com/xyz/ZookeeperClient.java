@@ -13,7 +13,8 @@ import java.io.IOException;
  */
 public class ZookeeperClient {
 
-    private static final String HOST_PORT = "192.168.202.128:2181";
+//    private static final String HOST_PORT = "192.168.202.128:2181";  //公司的zookeeper地址
+    private static final String HOST_PORT = "192.168.1.120:2181";      //家里的zookeeper地址
     private static final int TIME_OUT = 5000;
     private ZooKeeper zooKeeper;
     private ZookeeperWatcher zookeeperWatcher = new ZookeeperWatcher();
