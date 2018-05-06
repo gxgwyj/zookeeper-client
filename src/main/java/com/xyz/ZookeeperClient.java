@@ -51,7 +51,6 @@ public class ZookeeperClient {
      */
     public void watchChanged(String path){
         try {
-            zooKeeper.exists(path,zookeeperWatcher);
             zooKeeper.getChildren(path,zookeeperWatcher);
         } catch (KeeperException e) {
             e.printStackTrace();

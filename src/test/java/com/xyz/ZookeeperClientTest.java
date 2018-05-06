@@ -6,8 +6,8 @@ import org.junit.Test;
  * Created by Lenovo on 2018/5/5.
  */
 public class ZookeeperClientTest {
-    private ZookeeperClient zkCient = ZookeeperClient.getZkInstance();
 
+    private ZookeeperClient zkCient = ZookeeperClient.getZkInstance();
 
     @Test
     public void createPersistentNodeTest() throws Exception {
