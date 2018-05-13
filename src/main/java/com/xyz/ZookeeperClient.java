@@ -6,6 +6,7 @@ import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 
 /**
  * 类: ZookeeperClient <br>
@@ -124,8 +125,26 @@ public class ZookeeperClient {
         zooKeeper.setData(path,context.getBytes(CHAR_SET),-1);
     }
 
+    /**
+     * 获取节点数据
+     * @param path
+     * @return
+     * @throws Exception
+     */
     public String getNodeData(String path) throws Exception{
        return new String(zooKeeper.getData(path,false,null));
+    }
+
+    /**
+     * zookeeper 内置ACL Schemes
+     * （1）word:anyone任何人都有访问权限
+     * （2）auth 只要通过auth的user都有权限
+     * （3）digest 使用用户名/密码
+     * （4）使用ip地址段的方式验证权限
+     */
+    public void addDigestAuth(String user,String pwd) throws Exception{
+        String info = MessageFormat.format("{0}:{1}",user,pwd);
+        zooKeeper.addAuthInfo("digest",info.getBytes(CHAR_SET));
     }
 
 }

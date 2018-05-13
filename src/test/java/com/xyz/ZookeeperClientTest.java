@@ -11,10 +11,16 @@ public class ZookeeperClientTest {
 
     @Test
     public void createPersistentNodeTest() throws Exception {
+        addDigestAuthTest();
+        zkCient.addDigestAuth("root","root");
         String path = "/gaoxugang";
         String context = "高旭刚";
         String result = zkCient.createPersistentNode(path,context);
         System.out.println(result);
+//        while (true){
+//
+//        }
+
     }
 
     @Test
@@ -33,7 +39,13 @@ public class ZookeeperClientTest {
     @Test
     public void updateNodeDataTest() throws Exception {
         String path = "/gaoxugang";
-        zkCient.updateNodeData(path,"张三");
+        zkCient.updateNodeData(path, "张三");
+    }
+
+    public void addDigestAuthTest() throws Exception{
+        String user = "root";
+        String pwd = "root";
+        zkCient.addDigestAuth(user,pwd);
     }
 
 
