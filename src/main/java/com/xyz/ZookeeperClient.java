@@ -17,9 +17,9 @@ import java.text.MessageFormat;
 public class ZookeeperClient {
 
 //    private static final String HOST_PORT = "192.168.202.128:2181";  //公司的zookeeper地址
-    private static final String HOST_PORT = "192.168.1.120:2181";      //家里的zookeeper地址
-    private static final int TIME_OUT = 5000;
-    private static String CHAR_SET = "UTF-8";
+    public static final String HOST_PORT = "192.168.1.120:2181";      //家里的zookeeper地址
+    public static final int TIME_OUT = 5000;
+    public static String CHAR_SET = "UTF-8";
     private ZooKeeper zooKeeper;
     private ZookeeperWatcher zookeeperWatcher = new ZookeeperWatcher();
 
@@ -64,7 +64,7 @@ public class ZookeeperClient {
      * 创建持久的节点
      */
     public String createPersistentNode(String path,String context) throws Exception{
-        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.CREATOR_ALL_ACL, CreateMode.PERSISTENT);
     }
 
     /**
@@ -73,7 +73,7 @@ public class ZookeeperClient {
      * @param context
      */
     public String createPersistentSequentialNode(String path,String context) throws Exception {
-        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.CREATOR_ALL_ACL, CreateMode.PERSISTENT_SEQUENTIAL);
     }
 
     /**
@@ -85,7 +85,7 @@ public class ZookeeperClient {
      * @throws InterruptedException
      */
     public String createEphemeralNode(String path,String context) throws Exception {
-        return zooKeeper.create(path, context.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+        return zooKeeper.create(path, context.getBytes(), ZooDefs.Ids.CREATOR_ALL_ACL, CreateMode.EPHEMERAL);
     }
 
     /**
@@ -97,7 +97,7 @@ public class ZookeeperClient {
      * @throws InterruptedException
      */
     public String createEphemeralSequentialNode(String path,String context) throws Exception {
-        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        return zooKeeper.create(path, context.getBytes(CHAR_SET), ZooDefs.Ids.CREATOR_ALL_ACL, CreateMode.EPHEMERAL_SEQUENTIAL);
     }
 
     /**
